@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
+
 /**
  * 基于redis的分布式ID生成方案
  * <p>
@@ -21,10 +23,15 @@ public class RedisIdTest implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        long t1 = System.currentTimeMillis();
-        for (int i = 0; i < 10000; i++) {
-            System.out.println(redisIdWorker.nextId());
+
+        while (true){
+            System.out.println(1);
         }
-        System.out.println(System.currentTimeMillis() - t1);
+
+//        long t1 = System.currentTimeMillis();
+//        for (int i = 0; i < 10000; i++) {
+//            System.out.println(redisIdWorker.nextId());
+//        }
+//        System.out.println(System.currentTimeMillis() - t1);
     }
 }

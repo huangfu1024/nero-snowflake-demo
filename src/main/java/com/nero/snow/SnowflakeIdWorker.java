@@ -183,14 +183,32 @@ public class SnowflakeIdWorker {
     /**
      * 测试
      */
-    public static void main(String[] args) {
-        SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
-        long t1 = System.currentTimeMillis();
-        for (int i = 0; i < 100000; i++) {
-            long id = idWorker.nextId();
-//            System.out.println(Long.toBinaryString(id));
-            System.out.println(id);
+    public static void main(String[] args) throws InterruptedException {
+
+
+        for(int i = 0;i<5; i++){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(6000000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, "nero_" + i ).start();
         }
-        System.out.println(System.currentTimeMillis() - t1);
+
+//        Thread.sleep(600000);
+//        SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
+//        long t1 = System.currentTimeMillis();
+//        for (int i = 0; i < 100000; i++) {
+//            long id = idWorker.nextId();
+////            System.out.println(Long.toBinaryString(id));
+//            System.out.println(id);
+//        }
+//        System.out.println(System.currentTimeMillis() - t1);
     }
+
+
 }
